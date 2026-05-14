@@ -229,7 +229,7 @@ Decode `.octree` files back to point clouds:
 
 ```bash
 # SemanticKITTI
-python decode_edit.py \
+python decode.py \
   --input_dir ./encoded/ \
   --output_dir ./decoded/ \
   --ckpt ./weights/kitti/model.ckpt \
@@ -238,7 +238,7 @@ python decode_edit.py \
   --num_predict_layer 1
 
 # Ford
-python decode_edit.py \
+python decode.py \
   --input_dir ./encoded_ford/ \
   --output_dir ./decoded_ford/ \
   --ckpt ./weights/ford/model.ckpt \
@@ -347,7 +347,7 @@ Metrics reported per file: original points, decoded points, Chamfer distance (CD
 │   ├── kitti/model.ckpt               # Pre-trained KITTI model
 │   └── ford/model.ckpt                # Pre-trained Ford model
 ├── encode.py                          # Encoder entry point
-├── decode_edit.py                     # Decoder entry point
+├── decode.py                     # Decoder entry point
 ├── train.py                           # Training entry point
 └── eval_quality.py                    # Evaluation entry point
 ```
