@@ -1,0 +1,16 @@
+# @package _global_
+# Default training hyperparameters
+train:
+  loss_weight_full: 1.0
+  loss_weight1: 0.0
+  loss_weight2: 0.0
+  log_every_n_steps: 1
+  optimizer:
+    name: AdamW
+    weight_decay: 0.01
+    lr: 2e-4
+  lr_scheduler:
+    name: "CosineWarmup"
+    warmup_steps: 5000  # Default, overridden by dataset
+    max_steps: 1000000
+    min_lr: 1e-6

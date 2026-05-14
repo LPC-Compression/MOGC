@@ -1,0 +1,51 @@
+# @package _global_
+# Shared SelfOrderProbModel parameters
+model:
+  shuffle_order: False
+  train_module_name: BaseTrainModule
+  model_name: SelfOrderProbModel
+  num_class: 256
+  context_size: 8192
+  geo_feat_generator:
+    max_level: 15  # Default, overridden by dataset
+    embed_dims:
+      occ: 16
+      level: 4
+      octant: 4
+      extent: 16
+    pos_channels: [64, 128, 256]
+    mlp_attr2_channels: [80, 64, 64]
+    mlp_attr3_channels: [128, 128, 128]
+    edge_mlp1_channels: [256, 256, 256]
+    edge_mlp2_channels: [256, 256, 128]
+  self_swin_encoder:
+    num_channels: 256
+    depths: [4, 4, 4, 4, 2]
+    num_heads: [4, 4, 4, 4, 4]
+    order_list: [
+      ["z", "z-trans", "hilbert", "hilbert-trans"],
+      ["z", "z-trans", "hilbert", "hilbert-trans"],
+      ["z", "z-trans", "hilbert", "hilbert-trans"],
+      ["z", "z-trans", "hilbert", "hilbert-trans"],
+      ["z", "hilbert"]
+    ]
+    window_size: 512
+  ancient_mlp_channels: [1024, 512, 256]
+  predict_head:
+    prob_pred_mlp1_channels: [256, 256]
+    res_block:
+      kernel_size: 3
+      num_conv_layers: 8
+    pre_occ_mlp_channels: [16, 16]
+    pre_attn_mlp_channels: [240, 240]
+    cross_swin_encoder:
+      depths: [4, 4, 4, 2]
+      num_heads: [4, 4, 4, 4]
+      order_list: [
+        ["z", "z-trans", "hilbert", "hilbert-trans"],
+        ["z", "z-trans", "hilbert", "hilbert-trans"],
+        ["z", "z-trans", "hilbert", "hilbert-trans"],
+        ["z", "hilbert"]
+      ]
+      window_size: 512
+    prob_pred_mlp2_channels: [768, 512]

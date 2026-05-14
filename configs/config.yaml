@@ -1,0 +1,16 @@
+defaults:
+  - model: self
+  - train: default
+  - _self_
+  - dataset: kitti
+
+hydra:
+  run:
+    dir: .
+
+# Common top-level config (can be overridden by dataset)
+run_name: "kitti_self"
+wandb_id: null
+project_name: "PCC"
+gpus: [0]
+absolute_path: ""

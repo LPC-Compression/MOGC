@@ -1,0 +1,30 @@
+# @package _global_
+# Ford dataset config
+
+data:
+  val_loader_name: "TestGLSDataset"
+  trainloader_name: "IterableTrainGLSDataset"
+  dataset_name: "FordDataset"
+  train_data_dir: "Processed_data/Ford/train/level_17/"
+  val_data_dirs:
+    - "Processed_data/Ford/test_mini/level_13/"
+    - "Processed_data/Ford/test_mini/level_14/"
+    - "Processed_data/Ford/test_mini/level_15/"
+    - "Processed_data/Ford/test_mini/level_16/"
+    - "Processed_data/Ford/test_mini/level_17/"
+  batch_size: 16
+  num_workers: 16
+  pin_memory: true
+
+train:
+  CD_list: [0.635, 0.3191, 0.1579, 0.0799, 0.0397]
+  D1_list: [57.489, 63.4433, 69.4957, 75.4748, 81.5107]
+  D2_list: [63.620, 68.7907, 74.9653, 80.7129, 86.7976]
+  draw_level_start: 13
+  draw_level_end: 17
+  lr_scheduler:
+    warmup_steps: 5000
+
+model:
+  geo_feat_generator:
+    max_level: 17

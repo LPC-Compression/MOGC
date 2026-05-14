@@ -1,0 +1,33 @@
+# @package _global_
+# SemanticKITTI dataset config
+
+data:
+  val_loader_name: "TestGLSDataset"
+  trainloader_name: "IterableTrainGLSDataset"
+  dataset_name: "SemanticKITTIDataset"
+  train_data_dir: "DATA/SemanticKITTI/train/level_15/"
+  val_data_dirs:
+    - "DATA/SemanticKITTI/test/level_10/"
+    - "DATA/SemanticKITTI/test/level_11/"
+    - "DATA/SemanticKITTI/test/level_12/"
+    - "DATA/SemanticKITTI/test/level_13/"
+    - "DATA/SemanticKITTI/test/level_14/"
+    - "DATA/SemanticKITTI/test/level_15/"
+  batch_size: 12
+  accumulate_grad_batches: 1
+  num_workers: 8
+  pin_memory: true
+
+train:
+  CD_list: [0.19336835381558912, 0.09660117990011301, 0.04866094098533805, 0.02435260980005713, 0.012190190654353693, 0.006094291080558454]
+  D1_list: [53.90245904761905, 59.92746142857142, 65.88715619047619, 71.89773857142856, 77.90819857142857, 83.92925952380953]
+  D2_list: [58.42775095238096, 64.79588571428572, 71.0542961904762, 77.24489380952382, 83.47311238095237, 89.48895523809523]
+  draw_level_start: 10
+  draw_level_end: 15
+  max_epochs: 10
+  lr_scheduler:
+    warmup_steps: 4000
+
+model:
+  geo_feat_generator:
+    max_level: 15
